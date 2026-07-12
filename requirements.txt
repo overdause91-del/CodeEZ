@@ -1,4 +1,4 @@
-openai>=1.0.0
-anthropic>=0.30.0
-google-genai>=1.0.0
-python-dotenv>=1.0.0
+# CodeEZ n'a AUCUNE dependance externe.
+# Tout fonctionne avec la librairie standard Python.
+# pip install n'est pas necessaire !
+# Lance directement : python codeez.py

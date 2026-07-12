@@ -1,97 +1,35 @@
-# Utiliser CodeEZ avec Cursor
+# CodeEZ dans Cursor
 
-Cursor est un diteur de code bas sur VS Code intgrant des fonctionnalits IA.
+## Methode 1 : Ouvrir le fichier direct (la plus simple)
 
-## 1. Ouvrir CodeEZ dans Cursor
+1. Clone ou telecharge le projet
+2. Ouvre `codeez.py` dans Cursor
+3. Appuie sur le bouton **Run** (▷) en haut a droite
+4. Le terminal Cursor s'ouvre et CodeEZ se lance
 
-```bash
-git clone https://github.com/TON_USER/CodeEZ.git
-cd CodeEZ
-cursor .
-```
-
-Ou : **File > Open Folder** et choisis le dossier CodeEZ.
-
-## 2. Installer les dpendances
-
-Ouvre le terminal intgr de Cursor (`Ctrl + ù` ou `Cmd + J`) :
-
-```bash
-pip install -r requirements.txt
-```
-
-## 3. Configurer ta cl API
-
-Dans le terminal Cursor :
-
-```bash
-python main.py --setup
-```
-
-Suis les instructions l'cran pour entrer ta cl API.
-
-Ou crer un fichier `.env` la racine du projet :
-
-```env
-OPENAI_API_KEY=sk-...
-```
-
-## 4. Utiliser CodeEZ
-
-Dans le terminal Cursor :
-
-```bash
-python main.py
-```
-
-Pose tes questions directement.
-
-### Exemple d'utilisation
-```
-> cris une fonction qui vrifie si un mot est un palindrome en Python
-
-Voici une fonction simple :
-
-def est_palindrome(mot):
-    mot = mot.lower().replace(" ", "")
-    return mot == mot[::-1]
-
-# Test
-print(est_palindrome("radar"))  # True
-print(est_palindrome("hello"))  # False
-```
-
-## 5. Astuces
-
-- Utilise **Ctrl+C** pour annuler une rponse en cours
-- Utilise **/clear** pour vider l'historique de la session
-- Change de modle avec **/model gpt-4o-mini** (moins cher mais plus rapide)
-- Tu peux crer un alias dans le terminal intgr de Cursor :
+## Methode 2 : Terminal integre Cursor
 
 ```powershell
-# Windows PowerShell
-function codeez { python main.py @args }
-
-# bash/zsh
-alias codeez='python main.py'
+cd C:\chemin\vers\CodeEZ
+python codeez.py
 ```
 
-## Problmes courants
+## Methode 3 : Lanceur .ps1
 
-| Problme | Solution |
-|---------|----------|
-| `Python n'est pas reconnu` | Installe Python depuis python.org et coche "Add to PATH" |
-| `Module not found` | Relance `pip install -r requirements.txt` |
-| `Cl API invalide` | Vrifie ta cl dans `~/.codeez/config.json` ou refais `--setup` |
-| `Rate limit` | Attends quelques secondes ou change de modle |
+Fais un clic droit sur `codeez.ps1` → **Run with PowerShell**
 
-## Pourquoi utiliser CodeEZ dans Cursor ?
+## Pourquoi DeepSeek ?
 
-- Cursor a dj un terminal intgr, pas besoin d'en ouvrir un autre
-- Tu peux copier/coller du code directement de CodeEZ vers ton diteur
-- Tout est dans la mme fentre
-- Pas besoin de configurer un provider dans Cursor (conomie d'abonnement)
+- **Gratuit** : DeepSeek fournit un quota gratuit genereux
+- **Simple** : Une seule cle API sur https://platform.deepseek.com/api_keys
+- **Performant** : Modele deepseek-chat comparable a GPT-4
+- **Switch facile** : Si le quota gratuit est epuise, change de provider
 
-## Tu veux contribuer ?
+## Utilisation dans Cursor (free tier)
 
-Ouvre une issue ou une pull request sur le GitHub du projet !
+Quand Cursor bloque ton forfait gratuit :
+1. Ouvre le terminal Cursor (`Ctrl+ù`)
+2. Tape : `python codeez.py --ask "ta question"`
+3. Continue a coder avec DeepSeek gratuit
+
+Pas besoin de quitter Cursor, pas besoin d'ouvrir un navigateur.
