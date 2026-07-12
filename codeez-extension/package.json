@@ -1,0 +1,39 @@
+{
+  "name": "codeez",
+  "displayName": "CodeEZ",
+  "description": "Agent IA gratuit integré dans Cursor - Ollama, DeepSeek, OpenAI, Claude",
+  "version": "0.1.0",
+  "publisher": "codeez",
+  "engines": { "vscode": "^1.80.0" },
+  "categories": ["Chat", "Other"],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codeez.openChat",
+        "title": "CodeEZ: Ouvrir le chat"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        { "id": "codeez-sidebar", "title": "CodeEZ", "icon": "$(comment-discussion)" }
+      ]
+    },
+    "views": {
+      "codeez-sidebar": [
+        { "type": "webview", "id": "codeez.chat", "name": "CodeEZ Chat" }
+      ]
+    },
+    "configuration": {
+      "title": "CodeEZ",
+      "properties": {
+        "codeez.deepseekKey": { "type": "string", "default": "", "description": "DeepSeek API Key" },
+        "codeez.openaiKey": { "type": "string", "default": "", "description": "OpenAI API Key" },
+        "codeez.anthropicKey": { "type": "string", "default": "", "description": "Anthropic API Key" },
+        "codeez.googleKey": { "type": "string", "default": "", "description": "Google Gemini API Key" },
+        "codeez.openrouterKey": { "type": "string", "default": "", "description": "OpenRouter API Key" }
+      }
+    }
+  }
+}
