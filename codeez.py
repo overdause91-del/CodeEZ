@@ -307,14 +307,16 @@ def interactive_mode():
         print("=" * 50)
         print("  CodeEZ - Bienvenue !")
         print("=" * 50)
-        print()
-        print("Configure-toi en 30 secondes :")
-        print("  1. Va sur https://platform.deepseek.com/api_keys")
-        print("  2. Copie ta cle API (gratuite)")
-        print("  3. Lance : python codeez.py --setup")
-        print()
-        print("Ou choisis un autre provider plus tard.")
-        return
+        print("\nAucune cle API configuree.")
+        print("On va configurer DeepSeek (gratuit) en 30 secondes.\n")
+        interactive_setup()
+        cfg = load_config()
+        provider = cfg.get("default_provider", "deepseek")
+        model = cfg.get("default_model", PROVIDERS[provider]["default_model"])
+        api_key = get_api_key(provider)
+        if not api_key:
+            print("\nToujours pas de cle. Relance quand tu veux !")
+            return
 
     info = PROVIDERS[provider]
     print("=" * 50)
