@@ -1,73 +1,50 @@
 # CodeEZ
 
-**Agent IA zero-dependance - DeepSeek gratuit par defaut**
+**Interface graphique pour LLM - Ollama (100% gratuit) + DeepSeek, OpenAI, Claude, Gemini...**
 
-Pas de pip install. Pas de dependances. Un seul fichier Python. Clone et lance.
-
----
-
-## Installation (15 secondes)
-
-### Dans Cursor (ou n'importe quel terminal)
-
-```powershell
-git clone https://github.com/overdause91-del/CodeEZ.git
-cd CodeEZ
-python codeez.py --setup
-```
-
-> Si `git` n'est pas reconnu, telecharge le zip :
-> https://github.com/overdause91-del/CodeEZ/archive/refs/heads/main.zip
-
-> Si `python` n'est pas reconnu, utilise le chemin complet :
-> ```powershell
-> & "$env:LOCALAPPDATA\Programs\Python\Python313\python.exe" codeez.py --setup
-> ```
-
-### Sinon, double-clic sur le fichier :
-- `codeez.ps1` (Windows) - trouve Python automatiquement
-- Ou ouvre `codeez.py` dans Cursor et appuie sur **Run** (▷)
+Zero dependance. Un seul clic pour lancer. Interface claire.
 
 ---
 
-## Configuration
+## Utilisation
 
-Lance et suis les instructions :
+### Option 1 : Interface graphique (recommande)
+
 ```powershell
-python codeez.py --setup
+python codeez_gui.py
 ```
 
-**DeepSeek (gratuit)** est propose par defaut.
-- Va sur https://platform.deepseek.com/api_keys
-- Cree un compte, copie ta cle API
-- Colle-la dans le terminal
+Ouvre `codeez_gui.py` dans **Cursor / VS Code** et clique **Run** (▷).
 
-Termine ! Tu peux maintenant lancer :
+L'interface propose :
+- **Mode Auto** : detecte Ollama (local, gratuit), sinon guide vers DeepSeek
+- **Config** : selection du provider avec tuto de connexion integre
+- **Chat** : interface de discussion avec historique
+
+### Option 2 : CLI (terminal)
+
 ```powershell
 python codeez.py
 ```
 
 ---
 
-## Switch vers d'autres modeles
+## Mode Auto
 
-En mode interactif, utilise :
-```
-/provider openai       # Switch vers OpenAI
-/provider openrouter   # Switch vers OpenRouter (100+ modeles)
-/provider anthropic    # Switch vers Claude
-/provider google       # Switch vers Gemini (gratuit)
-/model deepseek-chat   # Change le modele
-```
+Quand tu actives le **Mode Auto** :
+1. CodeEZ cherche Ollama sur ton PC (http://localhost:11434)
+2. **Si Ollama est trouve** : utilise les modeles locaux (100% gratuit, sans cle)
+3. **Sinon** : propose DeepSeek avec un tuto pour obtenir ta cle gratuite
 
-Ou refais `--setup` pour changer de provider par defaut.
+Pour installer Ollama : https://ollama.ai
 
 ---
 
-## Providers supportes
+## Providers disponibles
 
 | Provider | Prix | Modele par defaut |
 |----------|------|-------------------|
+| **Ollama (local)** | 100% Gratuit | Modele installe localement |
 | **DeepSeek** | Gratuit | deepseek-chat |
 | **Google Gemini** | Gratuit | gemini-2.5-flash |
 | **OpenAI** | Payant | gpt-4o-mini |
@@ -76,9 +53,22 @@ Ou refais `--setup` pour changer de provider par defaut.
 
 ---
 
-## Pourquoi zero dependance ?
+## Configuration manuelle
 
-`codeez.py` utilise uniquement la librairie standard Python (`urllib`, `json`).
-Pas de `pip install`, pas de `requirements.txt`, pas de conflits de versions.
+Dans l'interface graphique, clique sur **Config** pour :
+1. Choisir un provider
+2. Suivre le tuto integre (lien + etapes)
+3. Coller ta cle API
+4. C'est pret !
 
-Ca marche sur n'importe quelle machine avec Python 3.10+.
+---
+
+## Structure du projet
+
+```
+CodeEZ/
+  codeez_gui.py    # Interface graphique (tkinter)
+  codeez.py        # Version CLI
+  codeez.ps1       # Lanceur PowerShell
+  README.md        # Ce fichier
+```
